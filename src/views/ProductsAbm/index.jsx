@@ -1,19 +1,19 @@
 import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
 import { Title } from "./style";
-function ClientsAbm() {
+function ProductsAbm() {
   return (
     <>
       <Spacer width="300px" height="150px" />
-      <Title> abm clientes</Title>
+      <Title> abm productos</Title>
       <Spacer width="300px" height="50px" />
-      <Button text="Agregar Cliente" color="#C2DFE3" />
+      <Button text="Cargar Productos" color="#C2DFE3" />
       <Spacer width="300px" height="50px" />
-      <Button text="Editar Cliente" color="#C2DFE3" />
+      <Button text="Editar Productos" color="#C2DFE3" />
       <Spacer width="300px" height="50px" />
-      <Button text="Dar de Baja Cliente" color="#C2DFE3" />
+      <Button text="Eliminar Productos" color="#C2DFE3" />
     </>
   );
 }
 
-export default ClientsAbm;
+export default ProductsAbm;

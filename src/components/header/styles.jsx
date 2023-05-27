@@ -18,11 +18,17 @@ export const Container = styled.header`
 `;
 
 export const Row = styled.div`
-  height: 10vh;
+  display: none;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
+  }
+`;
+
+export const NavPc = styled.div`
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

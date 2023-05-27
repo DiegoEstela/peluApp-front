@@ -4,6 +4,19 @@ export const NavContainer = styled.nav`
   width: 100%;
   font-size: 2rem;
   text-align: center;
+  padding: 1% 0;
+  .link {
+    text-decoration: none;
+    text-transform: none;
+  }
+  a {
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.7s ease;
+  }
   @media (max-width: 768px) {
     .links {
       display: none;

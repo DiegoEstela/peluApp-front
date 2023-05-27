@@ -6,7 +6,7 @@ function NavLinks({ active, setActive }) {
     <NavContainer>
       <div className={`links ${active ? "active" : ""}`}>
         <Link
-          to="/ambClients"
+          to="/abmClients"
           onClick={() => {
             setActive(!active);
           }}
@@ -15,7 +15,7 @@ function NavLinks({ active, setActive }) {
           Clientes{" "}
         </Link>
         <Link
-          to="/products"
+          to="/abmProducts"
           onClick={() => {
             setActive(!active);
           }}
@@ -24,7 +24,7 @@ function NavLinks({ active, setActive }) {
           Productos{" "}
         </Link>
         <Link
-          to="/services"
+          to="/abmServices"
           onClick={() => {
             setActive(!active);
           }}
