@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer } from "./styles";
 import Spacer from "../../components/Spacer";
 import { CreateCostumer } from "../../api/services/createCustomer";
+import Swal from "sweetalert2";
 
 function Clients() {
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -12,7 +15,16 @@ function Clients() {
 
   const onSubmit = async (data) => {
     const result = await CreateCostumer(data);
-    console.log(result);
+    if (result) {
+      const creacionOk = await Swal.fire(
+        "Creacion Exitosa",
+        "El cliente se creo correctamente",
+        "success"
+      );
+      creacionOk && navigate("/");
+    } else {
+      await Swal.fire("Creacion Fallida", "Error al crear el usuario", "error");
+    }
   };
   return (
     <FormContainer>

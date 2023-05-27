@@ -6,6 +6,7 @@ import Products from "./views/Products";
 import Services from "./views/services";
 import Footer from "./components/Footer";
 import { Container } from "./App.style";
+import ClientsAbm from "./views/ClientsAbm";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/ambClients" element={<ClientsAbm />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/products" element={<Products />} />
           <Route path="/services" element={<Services />} />

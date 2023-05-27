@@ -6,7 +6,7 @@ function NavLinks({ active, setActive }) {
     <NavContainer>
       <div className={`links ${active ? "active" : ""}`}>
         <Link
-          to="/clients"
+          to="/ambClients"
           onClick={() => {
             setActive(!active);
           }}

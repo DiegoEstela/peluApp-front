@@ -20,7 +20,8 @@ export const NavContainer = styled.nav`
       transition: all 0.7s ease;
 
       a {
-        color: #e0fbfc;
+        color: black;
+        text-decoration: none;
         font-size: 1.5rem;
         display: block;
         transition: all 0.7s ease;
