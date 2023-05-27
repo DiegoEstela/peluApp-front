@@ -22,7 +22,7 @@ export const FormComponent = styled.form`
   .form_container {
     margin-top: 3em;
     display: grid;
-    gap: 1em;
+    gap: 1.5em;
   }
 
   .form_group {
@@ -46,7 +46,7 @@ export const FormComponent = styled.form`
     color: #9db4c0;
     cursor: pointer;
     position: absolute;
-    top: -8px;
+    top: -5px;
     left: 5px;
     transform: translateY(10px)
     transition: transform .5s, color .3s;
@@ -76,10 +76,12 @@ export const FormComponent = styled.form`
         transition: transform .4s;
 
     }
-    .form_input:focus ~ .form_line,
-    .form_input:not(:placerholder-shown){
-    transform: scale(1)
-  }
 
   }
+
+  .warning{
+    color: red;
+  }
+
+
 `;

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FormComponent, FormContainer } from "./styles";
 import Spacer from "../../components/Spacer";
+import { CreateCostumer } from "../../api/services/createCustomer";
 
 function Clients() {
   const {
@@ -9,8 +10,9 @@ function Clients() {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const result = await CreateCostumer(data);
+    console.log(result);
   };
   return (
     <FormContainer>
@@ -28,7 +30,7 @@ function Clients() {
             <label className="form_label">Nombre</label>
             <span className="form_line"></span>
             {errors.nombre?.type === "required" && (
-              <p>El nombre es requerido</p>
+              <p className="warning">El nombre es requerido</p>
             )}
           </div>
           <div className="form_group">
@@ -41,6 +43,9 @@ function Clients() {
             />
             <label className="form_label">Apellido</label>
             <span className="form_line"></span>
+            {errors.apellido?.type === "required" && (
+              <p className="warning">El Apellido es requerido</p>
+            )}
           </div>
           <div className="form_group">
             <input
