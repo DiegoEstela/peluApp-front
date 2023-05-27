@@ -16,7 +16,6 @@ export const NavContainer = styled.nav`
       display: block;
       margin-left: auto;
       margin-right: auto;
-      top: 13%;
       text-align: center;
       transition: all 0.7s ease;
 

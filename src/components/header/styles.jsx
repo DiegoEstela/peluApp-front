@@ -1,20 +1,28 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
+  max-height: 10vh;
   height: 10vh;
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 768px) {
-    display: block;
-  }
+  background-color: #e5e5f7;
+  opacity: 0.4;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 8px
+    ),
+    repeating-linear-gradient(#5c6b7355, #5c6b73);
+  display: block;
 `;
 
 export const Row = styled.div`
+  height: 10vh;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
   }
 `;

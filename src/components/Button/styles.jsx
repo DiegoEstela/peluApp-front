@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
+export const ButtonContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`;
+
 export const ButtonComponent = styled.a`
   font-size: 20px;
   width: 160px;
   padding: 16px;
+  display: flex;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
   background: ${(props) => props.color};
