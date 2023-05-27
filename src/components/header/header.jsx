@@ -13,7 +13,7 @@ export default function Header() {
         <RiScissorsFill size="48px" color="#5C6B73" />
         <BurgetButton active={activeNav} setActive={setActiveNav} />
       </Row>
-      <NavLinks active={activeNav} />
+      <NavLinks active={activeNav} setActive={setActiveNav} />
     </Container>
   );
 }

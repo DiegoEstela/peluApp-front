@@ -1,12 +1,37 @@
 import { NavContainer, BgDiv } from "./styles";
+import { Link } from "react-router-dom";
 
-function NavLinks({ active }) {
+function NavLinks({ active, setActive }) {
   return (
     <NavContainer>
       <div className={`links ${active ? "active" : ""}`}>
-        <a> Clientes </a>
-        <a> Productos </a>
-        <a> Servicios </a>
+        <Link
+          to="/clients"
+          onClick={() => {
+            setActive(!active);
+          }}
+        >
+          {" "}
+          Clientes{" "}
+        </Link>
+        <Link
+          to="/products"
+          onClick={() => {
+            setActive(!active);
+          }}
+        >
+          {" "}
+          Productos{" "}
+        </Link>
+        <Link
+          to="/services"
+          onClick={() => {
+            setActive(!active);
+          }}
+        >
+          {" "}
+          Servicios{" "}
+        </Link>
       </div>
       <BgDiv className={`initial ${active ? "active" : ""}`}> </BgDiv>
     </NavContainer>

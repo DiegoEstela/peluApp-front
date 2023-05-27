@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
   @media (max-width: 768px) {
     .links {
       display: none;
@@ -15,12 +18,13 @@ export const NavContainer = styled.nav`
       margin-right: auto;
       top: 13%;
       text-align: center;
-      transition: all 0.5s ease;
+      transition: all 0.7s ease;
 
       a {
         color: #e0fbfc;
         font-size: 1.5rem;
         display: block;
+        transition: all 0.7s ease;
       }
     }
   }
