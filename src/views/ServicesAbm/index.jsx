@@ -8,7 +8,7 @@ function ServicesAbm() {
       <Spacer width="300px" height="150px" />
       <Title> abm Servicios</Title>
       <Spacer width="300px" height="50px" />
-      <Link to="/services" className="link">
+      <Link to="/abmServices/add" className="link">
         <Button text="Cargar Servicios" color="#C2DFE3" />
       </Link>
       <Spacer width="300px" height="50px" />

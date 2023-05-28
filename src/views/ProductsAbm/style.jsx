@@ -5,3 +5,10 @@ export const Title = styled.h1`
   padding: 20px;
   font-size: 1.2rem;
 `;
+
+export const AbmContainer = styled.div`
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+`;
