@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer } from "./styles";
-import { CreateServices } from "../../api/services/createService";
-import Spacer from "../../components/Spacer";
+import { CreateServices } from "../../../api/services/services/createService";
+import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
-import Loader from "../../components/Loader";
+import Loader from "../../../components/Loader";
 
 function Services() {
   const [loader, setLoader] = useState(false);

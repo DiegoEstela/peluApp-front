@@ -11,6 +11,10 @@ export const Container = styled.div`
   text-align: center;
   height:80vh;
   max-height: 80vh;
+`;
 
-
+export const FullContainer = styled.div`
+  margin: 0;
+  padding: 0;
+  height: -webkit-fill-available;
 `;

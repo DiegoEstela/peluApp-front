@@ -1,7 +1,8 @@
 import axios from "axios";
-import { createCostumersUrl } from "../../app/endpoints";
+import { customersUrl } from "../../../app/endpoints";
 
-export async function CreateCostumer(costumer) {
+export async function EditCostumers(costumer, id) {
+  console.log(id);
   const { nombre, apellido, fecha_nacimiento, telefono } = costumer;
   try {
     const headers = {
@@ -14,7 +15,7 @@ export async function CreateCostumer(costumer) {
       fecha_nacimiento,
       telefono,
     };
-    await axios.post(createCostumersUrl, body, {
+    await axios.put(`${customersUrl}/${id}`, body, {
       headers: headers,
     });
     return true;

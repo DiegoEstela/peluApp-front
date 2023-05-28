@@ -29,17 +29,18 @@ export const FormComponent = styled.form`
     position: relative;
   }
 
+  
   .form_input {
     width: 100%;
     background: none;
     color: #5c6b73;
     font-size: 1rem;
-    padding: 0.6em 0.3em;
+    padding-top: 16px;
     border: none;
     outline: none;
     border-bottom: 1px solid #9db4c0;
     font-family: "Roboto", sans-serif;
-  
+
   }
 
   .form_label {
@@ -47,9 +48,7 @@ export const FormComponent = styled.form`
     cursor: pointer;
     position: absolute;
     top: -5px;
-    left: 5px;
-    transform: translateY(10px)
-    transition: transform .5s, color .3s;
+    left: 1px;
   }
 
   .form_submit{

@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer } from "./styles";
-import { CreateCostumer } from "../../api/services/createCustomer";
-import Spacer from "../../components/Spacer";
+import { CreateCostumer } from "../../../api/services/customers/createCustomer";
+import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
-import Loader from "../../components/Loader";
+import Loader from "../../../components/Loader";
 
 function Clients() {
   const [loader, setLoader] = useState(false);

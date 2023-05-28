@@ -1,5 +1,4 @@
 const NODE_SERVER = process.env.REACT_APP_NODE_SERVER;
 
-export const createCostumersUrl = `${NODE_SERVER}/customers`;
-export const getCostumersURL = `${NODE_SERVER}/customers`;
-export const createServicesUrl = `${NODE_SERVER}/services`;
+export const customersUrl = `${NODE_SERVER}/customers`;
+export const servicesUrl = `${NODE_SERVER}/services`;
