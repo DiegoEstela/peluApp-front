@@ -16,4 +16,12 @@ export const FooterComponent = styled.footer`
   align-items: center;
   @media (max-width: 768px) {
   }
+
+  span {
+    display: flex;
+    flex-direction: row;
+    :hover {
+      cursor: pointer;
+    }
+  }
 `;

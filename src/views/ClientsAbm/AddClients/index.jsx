@@ -71,6 +71,7 @@ function Clients() {
             <div className="form_group">
               <input
                 className="form_input"
+                defaultValue="11"
                 type="number"
                 {...register("telefono", {
                   required: true,

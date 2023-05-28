@@ -10,6 +10,7 @@ import ClientsAbm from "./views/ClientsAbm";
 import ProductsAbm from "./views/ProductsAbm";
 import ServicesAbm from "./views/ServicesAbm";
 import EditClients from "./views/ClientsAbm/EditClients";
+import AddRevenue from "./views/AddRevenue";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/clients" element={<Clients />} />
           <Route path="/products" element={<Products />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/addRevenue" element={<AddRevenue />} />
         </Routes>
       </Container>
       <Footer />
