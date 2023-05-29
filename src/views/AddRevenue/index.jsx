@@ -9,6 +9,7 @@ import { FormComponent, FormContainer } from "./styles";
 import Swal from "sweetalert2";
 import Spacer from "../../components/Spacer";
 import { createRevenue } from "../../api/services/revenue/createRevenue";
+import ButtonClosed from "../../components/ButtonClosed";
 
 function AddRevenue() {
   const [customerId, setCustomerId] = useState();
@@ -43,10 +44,9 @@ function AddRevenue() {
 
   return (
     <FormContainer>
-      {status === "loading" && <Loader />}
-      {loader && <Loader />}
-      {status === "error" && <div>Error al obtener los clientes</div>}
+      <ButtonClosed />
       <FormComponent onSubmit={handleSubmit(onSubmit)}>
+        {status === "error" && <div>Error al obtener los clientes</div>}
         <h1 className="title"> Ingresar nuevo corte</h1>
         <div className="form_container">
           <div className="form_group">
@@ -94,8 +94,12 @@ function AddRevenue() {
             </div>
           )}
 
-          <Spacer height="5vh" />
-          <input className="form_submit" type="submit" value="Enviar" />
+          <Spacer height="12.5vh" />
+          {loader || status === "loading" ? (
+            <Loader />
+          ) : (
+            <input className="form_submit" type="submit" value="Guardar" />
+          )}
         </div>
       </FormComponent>
     </FormContainer>

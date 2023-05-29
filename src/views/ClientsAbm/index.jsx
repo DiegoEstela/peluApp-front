@@ -2,21 +2,22 @@ import Button from "../../components/Button";
 import Spacer from "../../components/Spacer";
 import { Link } from "react-router-dom";
 import { Title, AbmContainer } from "./style";
+import ButtonClosed from "../../components/ButtonClosed";
 function ClientsAbm() {
   return (
     <AbmContainer>
-      <Spacer width="300px" height="150px" />
-      <Title> abm clientes</Title>
+      <ButtonClosed />
+      <Title> Menu Clientes</Title>
       <Spacer width="300px" height="50px" />
       <Link to="/abmClients/add" className="link">
-        <Button text="Cargar Clientes" color="#C2DFE3" />
+        <Button text="Nuevo Cliente" color="#C2DFE3" />
       </Link>
       <Spacer width="300px" height="50px" />
       <Link to="/abmClients/edit" className="link">
         <Button text="Editar Cliente" color="#C2DFE3" />
       </Link>
       <Spacer width="300px" height="50px" />
-      <Button text="Dar de Baja Cliente" color="#C2DFE3" />
+      <Button text="Eliminar Cliente" color="#C2DFE3" />
     </AbmContainer>
   );
 }

@@ -5,9 +5,9 @@ import { useQuery } from "react-query";
 import { getAllCustomers } from "../../../api/services/customers/getAllCustomers";
 import Loader from "../../../components/Loader";
 import { FormComponent, FormContainer } from "./styles";
-import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
 import { EditCostumers } from "../../../api/services/customers/editCustumers";
+import ButtonClosed from "../../../components/ButtonClosed";
 
 function EditClients() {
   const [defaultValues, setDefaultValues] = useState();
@@ -19,7 +19,6 @@ function EditClients() {
     formState: { errors },
     handleSubmit,
   } = useForm();
-
   const onSubmit = async (data) => {
     setLoader(true);
     const result = await EditCostumers(data, defaultValues?.id);
@@ -54,10 +53,9 @@ function EditClients() {
 
   return (
     <FormContainer>
-      {status === "loading" && <Loader />}
-      {loader && <Loader />}
-      {status === "error" && <div>Error al obtener los clientes</div>}
+      <ButtonClosed />
       <FormComponent onSubmit={handleSubmit(onSubmit)}>
+        {status === "error" && <div>Error al obtener los clientes</div>}
         <h1 className="title"> Editar Cliente</h1>
         <div className="form_container">
           <div className="form_group">
@@ -128,8 +126,12 @@ function EditClients() {
             <label className="form_label">Nacimiento</label>
             <span className="form_line"></span>
           </div>
-          <Spacer height="5vh" />
-          <input className="form_submit" type="submit" value="Enviar" />
+
+          {loader || status === "loading" ? (
+            <Loader />
+          ) : (
+            <input className="form_submit" type="submit" value="Enviar" />
+          )}
         </div>
       </FormComponent>
     </FormContainer>

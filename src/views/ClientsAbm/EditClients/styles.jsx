@@ -15,6 +15,12 @@ export const FormComponent = styled.form`
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 5px 10px -3px rgb(0 0 0 / 80%);
+  @media (max-width: 768px) {
+    border-radius: 0;
+    box-shadow: none;
+  }
+ 
+
 
   .title {
     font-size: 1.5rem;

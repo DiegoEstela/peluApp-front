@@ -14,8 +14,6 @@ export const FooterComponent = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  @media (max-width: 768px) {
-  }
 
   span {
     display: flex;

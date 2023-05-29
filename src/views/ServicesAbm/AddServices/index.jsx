@@ -5,6 +5,7 @@ import { FormComponent, FormContainer } from "./styles";
 import { CreateServices } from "../../../api/services/services/createService";
 import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
+import ButtonClosed from "../../../components/ButtonClosed";
 import Loader from "../../../components/Loader";
 
 function Services() {
@@ -34,31 +35,32 @@ function Services() {
   };
   return (
     <FormContainer>
-      {loader ? (
-        <Loader />
-      ) : (
-        <FormComponent onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="title"> Agregar nuevo Servicio</h1>
-          <div className="form_container">
-            <div className="form_group">
-              <input
-                className="form_input"
-                type="text"
-                {...register("concepto", {
-                  required: true,
-                })}
-              />
-              <label className="form_label">Nombre del servicio</label>
-              <span className="form_line"></span>
-              {errors.concepto?.type === "required" && (
-                <p className="warning">El nombre es requerido</p>
-              )}
-            </div>
-            <Spacer height="5vh" />
-            <input className="form_submit" type="submit" value="Cargar" />
+      <ButtonClosed />
+      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="title"> Agregar nuevo Servicio</h1>
+        <div className="form_container">
+          <div className="form_group">
+            <input
+              className="form_input"
+              type="text"
+              {...register("concepto", {
+                required: true,
+              })}
+            />
+            <label className="form_label">Nombre del servicio</label>
+            <span className="form_line"></span>
+            {errors.concepto?.type === "required" && (
+              <p className="warning">El nombre es requerido</p>
+            )}
           </div>
-        </FormComponent>
-      )}
+          <Spacer height="27vh" />
+          {loader ? (
+            <Loader />
+          ) : (
+            <input className="form_submit" type="submit" value="Cargar" />
+          )}
+        </div>
+      </FormComponent>
     </FormContainer>
   );
 }

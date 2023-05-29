@@ -5,7 +5,7 @@ import Home from "./views/Home";
 import Products from "./views/ProductsAbm/AddProducts";
 import Services from "./views/ServicesAbm/AddServices";
 import Footer from "./components/Footer";
-import { Container, FullContainer } from "./App.style";
+import { Container, FullContainer, Card } from "./App.style";
 import ClientsAbm from "./views/ClientsAbm";
 import ProductsAbm from "./views/ProductsAbm";
 import ServicesAbm from "./views/ServicesAbm";
@@ -17,18 +17,20 @@ function App() {
     <FullContainer>
       <Header />
       <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/abmClients" element={<ClientsAbm />} />
-          <Route path="/abmClients/add" element={<Clients />} />
-          <Route path="/abmClients/edit" element={<EditClients />} />
-          <Route path="/abmProducts" element={<ProductsAbm />} />
-          <Route path="/abmProducts/add" element={<Products />} />
-          <Route path="/abmServices" element={<ServicesAbm />} />
-          <Route path="/abmServices/add" element={<Services />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/addRevenue" element={<AddRevenue />} />
-        </Routes>
+        <Card>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/abmClients" element={<ClientsAbm />} />
+            <Route path="/abmClients/add" element={<Clients />} />
+            <Route path="/abmClients/edit" element={<EditClients />} />
+            <Route path="/abmProducts" element={<ProductsAbm />} />
+            <Route path="/abmProducts/add" element={<Products />} />
+            <Route path="/abmServices" element={<ServicesAbm />} />
+            <Route path="/abmServices/add" element={<Services />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/addRevenue" element={<AddRevenue />} />
+          </Routes>
+        </Card>
       </Container>
       <Footer />
     </FullContainer>

@@ -1,16 +1,18 @@
 import React from "react";
-import { Dna } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import { LoaderComponent } from "./styles";
 function Loader() {
   return (
     <LoaderComponent>
-      <Dna
-        visible={true}
-        height="300"
-        width="300"
-        ariaLabel="dna-loading"
+      <ThreeDots
+        height="30"
+        width="100"
+        radius="9"
+        color="#5C6B73"
+        ariaLabel="three-dots-loading"
         wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
+        wrapperClassName=""
+        visible={true}
       />
     </LoaderComponent>
   );

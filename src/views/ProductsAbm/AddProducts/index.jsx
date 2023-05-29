@@ -6,6 +6,7 @@ import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import { CreateProduct } from "../../../api/services/products/createProduct";
+import ButtonClosed from "../../../components/ButtonClosed";
 
 function Services() {
   const [loader, setLoader] = useState(false);
@@ -39,45 +40,46 @@ function Services() {
   };
   return (
     <FormContainer>
-      {loader ? (
-        <Loader />
-      ) : (
-        <FormComponent onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="title"> Agregar nuevo producto</h1>
-          <div className="form_container">
-            <div className="form_group">
-              <input
-                className="form_input"
-                type="text"
-                {...register("concepto", {
-                  required: true,
-                })}
-              />
-              <label className="form_label">Nombre del producto</label>
-              <span className="form_line"></span>
-              {errors.concepto?.type === "required" && (
-                <p className="warning">El nombre del producto es requerido</p>
-              )}
-            </div>
-            <div className="form_group">
-              <input
-                className="form_input"
-                type="number"
-                {...register("precio", {
-                  required: true,
-                })}
-              />
-              <label className="form_label">Valor del producto</label>
-              <span className="form_line"></span>
-              {errors.concepto?.type === "required" && (
-                <p className="warning">El valor del producto es requerido</p>
-              )}
-            </div>
-            <Spacer height="5vh" />
-            <input className="form_submit" type="submit" value="Cargar" />
+      <ButtonClosed />
+      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="title"> Agregar nuevo producto</h1>
+        <div className="form_container">
+          <div className="form_group">
+            <input
+              className="form_input"
+              type="text"
+              {...register("concepto", {
+                required: true,
+              })}
+            />
+            <label className="form_label">Nombre del producto</label>
+            <span className="form_line"></span>
+            {errors.concepto?.type === "required" && (
+              <p className="warning">El nombre del producto es requerido</p>
+            )}
           </div>
-        </FormComponent>
-      )}
+          <div className="form_group">
+            <input
+              className="form_input"
+              type="number"
+              {...register("precio", {
+                required: true,
+              })}
+            />
+            <label className="form_label">Valor del producto</label>
+            <span className="form_line"></span>
+            {errors.concepto?.type === "required" && (
+              <p className="warning">El valor del producto es requerido</p>
+            )}
+          </div>
+          <Spacer height="20vh" />
+          {loader ? (
+            <Loader />
+          ) : (
+            <input className="form_submit" type="submit" value="Cargar" />
+          )}
+        </div>
+      </FormComponent>
     </FormContainer>
   );
 }

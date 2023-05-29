@@ -7,7 +7,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonComponent = styled.a`
-  font-size: 20px;
+  font-size: 18px;
   width: 160px;
   padding: 16px;
   display: flex;
