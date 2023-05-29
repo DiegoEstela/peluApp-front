@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RiScissorsFill } from "react-icons/ri";
+import { AiFillHome } from "react-icons/ai";
 import { Row, Container, NavPc } from "./styles";
 import { Link } from "react-router-dom";
 import BurgetButton from "../BurgerButton/BurgetButton";
@@ -12,7 +12,7 @@ export default function Header() {
     <Container>
       <Row>
         <Link to="/">
-          <RiScissorsFill size="48px" color="#5C6B73" />
+          <AiFillHome size="48px" color="black" />
         </Link>
         <BurgetButton active={activeNav} setActive={setActiveNav} />
         <NavPc>

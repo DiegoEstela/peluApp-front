@@ -11,6 +11,7 @@ import ProductsAbm from "./views/ProductsAbm";
 import ServicesAbm from "./views/ServicesAbm";
 import EditClients from "./views/ClientsAbm/EditClients";
 import AddRevenue from "./views/AddRevenue";
+import AddExpense from "./views/AddExpenses";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/abmServices/add" element={<Services />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/addRevenue" element={<AddRevenue />} />
+            <Route path="/addExpense" element={<AddExpense />} />
           </Routes>
         </Card>
       </Container>

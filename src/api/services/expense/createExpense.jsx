@@ -1,18 +1,17 @@
 import axios from "axios";
-import { revenuesUrl } from "../../../app/endpoints";
+import { expensesUrl } from "../../../app/endpoints";
 
-export async function createRevenue(data) {
+export async function createExpense(servicio_id, valor) {
   const body = {
-    cliente_id: data.cliente_id,
-    valor: data.valor,
-    producto: data.product_id,
+    servicio_id,
+    valor,
   };
   try {
     const headers = {
       "Content-Type": "application/json",
     };
 
-    await axios.post(revenuesUrl, body, {
+    await axios.post(expensesUrl, body, {
       headers: headers,
     });
     return true;

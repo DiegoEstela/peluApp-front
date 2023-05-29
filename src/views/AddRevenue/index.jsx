@@ -12,18 +12,20 @@ import { createRevenue } from "../../api/services/revenue/createRevenue";
 import ButtonClosed from "../../components/ButtonClosed";
 
 function AddRevenue() {
-  const [customerId, setCustomerId] = useState();
-  const [productId, setProductId] = useState();
-  const [precio, setPrecio] = useState();
   const [loader, setLoader] = useState(false);
   const { data: customers, status } = useQuery("customers", getAllCustomers);
   const { data: products, isLoading } = useQuery("products", getAllProducts);
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     setLoader(true);
-    const result = await createRevenue(customerId, data?.valor, productId);
+    const result = await createRevenue(data);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -36,10 +38,13 @@ function AddRevenue() {
     }
   };
 
-  const handleValuePrecio = async (id) => {
-    const productFinded = products?.data.find((product) => product.id === id);
-    setPrecio(productFinded.precio);
-    setProductId(id);
+  const handleSelectChange = (prodId) => {
+    const productSelected = products.data.find((prod) => prod.id === prodId);
+    if (productSelected) {
+      setValue("cliente_id", customers?.data[0].id);
+      setValue("product_id", productSelected.id);
+      setValue("valor", productSelected.precio);
+    }
   };
 
   return (
@@ -50,10 +55,7 @@ function AddRevenue() {
         <h1 className="title"> Ingresar nuevo corte</h1>
         <div className="form_container">
           <div className="form_group">
-            <select
-              className="form_input"
-              onChange={(e) => setCustomerId(parseInt(e.target.value))}
-            >
+            <select className="form_input" {...register("cliente_id")}>
               {customers?.data.map((customer) => (
                 <option key={customer.id} value={`${customer.id}`}>
                   {customer.nombre} {customer.apellido}
@@ -66,8 +68,9 @@ function AddRevenue() {
           <div className="form_group">
             <select
               className="form_input"
-              onChange={(e) => handleValuePrecio(parseInt(e.target.value))}
+              onChange={(e) => handleSelectChange(parseInt(e.target.value))}
             >
+              <option> Seleccionar</option>
               {products?.data.map((product) => (
                 <option key={product.id} value={`${product.id}`}>
                   {product.concepto}
@@ -77,25 +80,23 @@ function AddRevenue() {
             <label className="form_label">Producto</label>
             <span className="form_line"></span>
           </div>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <div className="form_group">
-              <input
-                className="form_input"
-                type="number"
-                defaultValue={precio || ""}
-                {...register("valor", {
-                  required: true,
-                })}
-              />
-              <label className="form_label">Valor</label>
-              <span className="form_line"></span>
-            </div>
-          )}
 
-          <Spacer height="12.5vh" />
-          {loader || status === "loading" ? (
+          <div className="form_group">
+            <input
+              className="form_input"
+              type="number"
+              {...register("valor", {
+                required: true,
+              })}
+            />
+            <label className="form_label">Valor</label>
+            <span className="form_line"></span>
+            {errors.valor?.type === "required" && (
+              <span className="warning">Elija un producto para guardar</span>
+            )}
+          </div>
+          <Spacer height="12vh" />
+          {loader | status | (isLoading === "loading") ? (
             <Loader />
           ) : (
             <input className="form_submit" type="submit" value="Guardar" />

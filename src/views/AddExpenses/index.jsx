@@ -2,13 +2,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer } from "./styles";
-import Spacer from "../../../components/Spacer";
+import { useQuery } from "react-query";
+import Spacer from "../../components/Spacer";
 import Swal from "sweetalert2";
-import Loader from "../../../components/Loader";
-import { CreateProduct } from "../../../api/services/products/createProduct";
-import ButtonClosed from "../../../components/ButtonClosed";
+import Loader from "../../components/Loader";
+import ButtonClosed from "../../components/ButtonClosed";
+import { getAllServices } from "../../api/services/services/getAllServices";
+import { createExpense } from "../../api/services/expense/createExpense";
 
-function Products() {
+function AddExpense() {
+  const { data: services, isLoading } = useQuery("services", getAllServices);
+  const [serviceId, setServiceId] = useState(1);
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   const {
@@ -18,9 +22,8 @@ function Products() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     setLoader(true);
-    const result = await CreateProduct(data);
+    const result = await createExpense(serviceId, data?.valor);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -42,38 +45,38 @@ function Products() {
     <FormContainer>
       <ButtonClosed />
       <FormComponent onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="title"> Agregar nuevo producto</h1>
+        <h1 className="title"> Agregar Gasto</h1>
         <div className="form_container">
           <div className="form_group">
-            <input
+            <select
               className="form_input"
-              type="text"
-              {...register("concepto", {
-                required: true,
-              })}
-            />
-            <label className="form_label">Nombre del producto</label>
+              onChange={(e) => setServiceId(parseInt(e.target.value))}
+            >
+              {services?.data.map((service) => (
+                <option key={service.id} value={`${service.id}`}>
+                  {service.concepto}
+                </option>
+              ))}
+            </select>
+            <label className="form_label">Servicio</label>
             <span className="form_line"></span>
-            {errors.concepto?.type === "required" && (
-              <p className="warning">El nombre del producto es requerido</p>
-            )}
           </div>
           <div className="form_group">
             <input
               className="form_input"
               type="number"
-              {...register("precio", {
+              {...register("valor", {
                 required: true,
               })}
             />
-            <label className="form_label">Valor del producto</label>
+            <label className="form_label">Valor del gasto</label>
             <span className="form_line"></span>
             {errors.concepto?.type === "required" && (
-              <p className="warning">El valor del producto es requerido</p>
+              <p className="warning">El valor del gasto es requerido</p>
             )}
           </div>
           <Spacer height="20vh" />
-          {loader ? (
+          {loader | isLoading ? (
             <Loader />
           ) : (
             <input className="form_submit" type="submit" value="Cargar" />
@@ -84,4 +87,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default AddExpense;
