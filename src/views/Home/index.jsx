@@ -1,8 +1,9 @@
 import { Title, HomeContainer } from "./style";
+import ClockWidget from "../../components/ClockWidget";
 function Home() {
   return (
     <HomeContainer>
-      <Title> SERGIO PELUQUERIA</Title>
+      <ClockWidget />
     </HomeContainer>
   );
 }
