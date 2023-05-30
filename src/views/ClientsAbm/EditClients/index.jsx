@@ -10,7 +10,7 @@ import { EditCostumers } from "../../../api/services/customers/editCustumers";
 import ButtonClosed from "../../../components/ButtonClosed";
 
 function EditClients() {
-  const [defaultValues, setDefaultValues] = useState();
+  const [ClientId, setClientId] = useState();
   const [loader, setLoader] = useState(false);
   const { data: customers, status } = useQuery("customers", getAllCustomers);
   const navigate = useNavigate();
@@ -18,10 +18,11 @@ function EditClients() {
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm();
   const onSubmit = async (data) => {
     setLoader(true);
-    const result = await EditCostumers(data, defaultValues?.id);
+    const result = await EditCostumers(data, ClientId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -40,15 +41,11 @@ function EditClients() {
     const dataFinded = customers?.data.find(
       (customer) => customer.id === parseInt(id)
     );
-    const body = {
-      id,
-      nombre: dataFinded.nombre,
-      apellido: dataFinded.apellido,
-      telefono: dataFinded.telefono,
-      fecha_nacimiento: dataFinded.fecha_nacimiento,
-    };
-
-    setDefaultValues(body);
+    setClientId(id);
+    setValue("nombre", dataFinded.nombre);
+    setValue("apellido", dataFinded.apellido);
+    setValue("telefono", dataFinded.telefono);
+    setValue("fecha_nacimiento", dataFinded.fecha_nacimiento);
   };
 
   return (
@@ -63,6 +60,7 @@ function EditClients() {
               className="form_input"
               onChange={(e) => handleValue(e.target.value)}
             >
+              <option>Seleccionar</option>
               {customers?.data.map((customer) => (
                 <option key={customer.id} value={`${customer.id}`}>
                   {customer.apellido} {customer.nombre}
@@ -76,7 +74,6 @@ function EditClients() {
             <input
               className="form_input"
               type="text"
-              defaultValue={defaultValues?.nombre || ""}
               {...register("nombre", {
                 required: true,
               })}
@@ -84,13 +81,12 @@ function EditClients() {
             <label className="form_label">Nombre</label>
             <span className="form_line"></span>
             {errors.nombre?.type === "required" && (
-              <p className="warning">El nombre es requerido</p>
+              <span className="warning">El nombre es requerido</span>
             )}
           </div>
           <div className="form_group">
             <input
               className="form_input"
-              defaultValue={defaultValues?.apellido || ""}
               type="text"
               {...register("apellido", {
                 required: true,
@@ -99,13 +95,12 @@ function EditClients() {
             <label className="form_label">Apellido</label>
             <span className="form_line"></span>
             {errors.apellido?.type === "required" && (
-              <p className="warning">El Apellido es requerido</p>
+              <span className="warning">El Apellido es requerido</span>
             )}
           </div>
           <div className="form_group">
             <input
               className="form_input"
-              defaultValue={defaultValues?.telefono || ""}
               type="number"
               {...register("telefono", {
                 required: true,
@@ -116,7 +111,6 @@ function EditClients() {
           </div>
           <div className="form_group">
             <input
-              defaultValue={defaultValues?.fecha_nacimiento || ""}
               className="form_input"
               type="date"
               {...register("fecha_nacimiento", {

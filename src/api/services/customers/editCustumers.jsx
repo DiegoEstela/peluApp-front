@@ -2,7 +2,6 @@ import axios from "axios";
 import { customersUrl } from "../../../app/endpoints";
 
 export async function EditCostumers(costumer, id) {
-  console.log(id);
   const { nombre, apellido, fecha_nacimiento, telefono } = costumer;
   try {
     const headers = {

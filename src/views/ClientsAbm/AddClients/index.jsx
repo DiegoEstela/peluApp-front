@@ -71,13 +71,25 @@ function Clients() {
             <input
               className="form_input"
               defaultValue="11"
-              type="number"
+              type="numer"
               {...register("telefono", {
                 required: true,
+                maxLength: 10,
+                minLength: 10,
               })}
             />
             <label className="form_label">Telefono</label>
             <span className="form_line"></span>
+            {errors.telefono?.type === "maxLength" && (
+              <span className="warning">
+                El numero ingresado no puede superar los 10 digitos
+              </span>
+            )}
+            {errors.telefono?.type === "minLength" && (
+              <span className="warning">
+                Recuerde que el numero debe comenzar en 11
+              </span>
+            )}
           </div>
           <div className="form_group">
             <input
@@ -89,6 +101,9 @@ function Clients() {
             />
             <label className="form_label">Nacimiento</label>
             <span className="form_line"></span>
+            {errors.fecha_nacimiento?.type === "required" && (
+              <span className="warning">Complete la fecha de nacimiento</span>
+            )}
           </div>
           <Spacer height="5vh" />
           {loader ? (
