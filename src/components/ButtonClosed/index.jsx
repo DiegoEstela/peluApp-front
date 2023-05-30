@@ -1,19 +1,15 @@
 import { ButtonContainer } from "./styles";
-import { BiCaretLeftCircle } from "react-icons/bi";
-
-import { useNavigate } from "react-router-dom";
+import { BiXCircle } from "react-icons/bi";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ButtonClosed() {
-  const navigate = useNavigate();
   return (
     <ButtonContainer>
-      <BiCaretLeftCircle
-        size="50px"
-        color="#5C6B73"
-        onClick={() => navigate(-1)}
-      />
+      <Link to="/">
+        <BiXCircle size="50px" color="#5C6B73" />
+      </Link>
     </ButtonContainer>
   );
 }

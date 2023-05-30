@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { FormComponent, FormContainer } from "./styles";
+import { FormComponent, FormContainer, FooterBody } from "./styles";
 import { CreateCostumer } from "../../../api/services/customers/createCustomer";
-import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
-import ButtonClosed from "../../../components/ButtonClosed";
+import ButtonBack from "../../../components/ButtonBack";
 
 function Clients() {
   const [loader, setLoader] = useState(false);
@@ -35,9 +34,9 @@ function Clients() {
   };
   return (
     <FormContainer>
-      <ButtonClosed />
-      <FormComponent onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="title"> Agregar nuevo Cliente</h1>
+      <ButtonBack ubication="abmClients" />
+      <FormComponent>
+        <h1 className="title"> Agregar Nuevo Cliente</h1>
         <div className="form_container">
           <div className="form_group">
             <input
@@ -81,14 +80,12 @@ function Clients() {
             <label className="form_label">Telefono</label>
             <span className="form_line"></span>
             {errors.telefono?.type === "maxLength" && (
-              <span className="warning">
+              <p className="warning">
                 El numero ingresado no puede superar los 10 digitos
-              </span>
+              </p>
             )}
             {errors.telefono?.type === "minLength" && (
-              <span className="warning">
-                Recuerde que el numero debe comenzar en 11
-              </span>
+              <p className="warning">el numero debe comenzar en 11</p>
             )}
           </div>
           <div className="form_group">
@@ -102,17 +99,22 @@ function Clients() {
             <label className="form_label">Nacimiento</label>
             <span className="form_line"></span>
             {errors.fecha_nacimiento?.type === "required" && (
-              <span className="warning">Complete la fecha de nacimiento</span>
+              <p className="warning">Complete la fecha de nacimiento</p>
             )}
           </div>
-          <Spacer height="5vh" />
-          {loader ? (
-            <Loader />
-          ) : (
-            <input className="form_submit" type="submit" value="Enviar" />
-          )}
         </div>
       </FormComponent>
+      <FooterBody>
+        {loader ? (
+          <Loader />
+        ) : (
+          <input
+            className="form_submit"
+            onClick={handleSubmit(onSubmit)}
+            value="Crear"
+          />
+        )}
+      </FooterBody>
     </FormContainer>
   );
 }

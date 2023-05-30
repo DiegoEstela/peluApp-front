@@ -1,11 +1,9 @@
 import { ButtonContainer, ButtonComponent } from "./styles";
 
-function Button({ text, color, size }) {
+function Button({ text, color }) {
   return (
     <ButtonContainer>
-      <ButtonComponent color={color} size={size}>
-        {text}
-      </ButtonComponent>
+      <ButtonComponent color={color}>{text}</ButtonComponent>
     </ButtonContainer>
   );
 }

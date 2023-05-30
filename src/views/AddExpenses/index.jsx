@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { FormComponent, FormContainer } from "./styles";
+import { FormComponent, FormContainer, FooterBody } from "./styles";
 import { useQuery } from "react-query";
-import Spacer from "../../components/Spacer";
 import Swal from "sweetalert2";
 import Loader from "../../components/Loader";
 import ButtonClosed from "../../components/ButtonClosed";
@@ -44,7 +43,7 @@ function AddExpense() {
   return (
     <FormContainer>
       <ButtonClosed />
-      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+      <FormComponent>
         <h1 className="title"> Agregar Gasto</h1>
         <div className="form_container">
           <div className="form_group">
@@ -71,18 +70,23 @@ function AddExpense() {
             />
             <label className="form_label">Valor del gasto</label>
             <span className="form_line"></span>
-            {errors.concepto?.type === "required" && (
+            {errors.valor?.type === "required" && (
               <p className="warning">El valor del gasto es requerido</p>
             )}
           </div>
-          <Spacer height="20vh" />
-          {loader | isLoading ? (
-            <Loader />
-          ) : (
-            <input className="form_submit" type="submit" value="Cargar" />
-          )}
         </div>
       </FormComponent>
+      <FooterBody>
+        {loader || isLoading ? (
+          <Loader />
+        ) : (
+          <input
+            className="form_submit"
+            onClick={handleSubmit(onSubmit)}
+            value="Guardar"
+          />
+        )}
+      </FooterBody>
     </FormContainer>
   );
 }

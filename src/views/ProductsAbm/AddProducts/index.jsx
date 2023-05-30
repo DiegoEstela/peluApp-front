@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { FormComponent, FormContainer } from "./styles";
-import Spacer from "../../../components/Spacer";
+import { FormComponent, FormContainer, FooterBody } from "./styles";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import { CreateProduct } from "../../../api/services/products/createProduct";
-import ButtonClosed from "../../../components/ButtonClosed";
+import ButtonBack from "../../../components/ButtonBack";
 
 function Products() {
   const [loader, setLoader] = useState(false);
@@ -40,8 +39,8 @@ function Products() {
   };
   return (
     <FormContainer>
-      <ButtonClosed />
-      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+      <ButtonBack ubication="abmProducts" />
+      <FormComponent>
         <h1 className="title"> Agregar nuevo producto</h1>
         <div className="form_container">
           <div className="form_group">
@@ -66,20 +65,25 @@ function Products() {
                 required: true,
               })}
             />
-            <label className="form_label">Valor del producto</label>
+            <label className="form_label">Precio</label>
             <span className="form_line"></span>
             {errors.concepto?.type === "required" && (
               <p className="warning">El valor del producto es requerido</p>
             )}
           </div>
-          <Spacer height="20vh" />
-          {loader ? (
-            <Loader />
-          ) : (
-            <input className="form_submit" type="submit" value="Cargar" />
-          )}
         </div>
       </FormComponent>
+      <FooterBody>
+        {loader ? (
+          <Loader />
+        ) : (
+          <input
+            className="form_submit"
+            onClick={handleSubmit(onSubmit)}
+            value="Agregar"
+          />
+        )}
+      </FooterBody>
     </FormContainer>
   );
 }

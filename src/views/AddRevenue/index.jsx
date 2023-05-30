@@ -5,9 +5,8 @@ import { useQuery } from "react-query";
 import { getAllCustomers } from "../../api/services/customers/getAllCustomers";
 import { getAllProducts } from "../../api/services/products/getAllProduts";
 import Loader from "../../components/Loader";
-import { FormComponent, FormContainer } from "./styles";
+import { FormComponent, FormContainer, FooterBody } from "./styles";
 import Swal from "sweetalert2";
-import Spacer from "../../components/Spacer";
 import { createRevenue } from "../../api/services/revenue/createRevenue";
 import ButtonClosed from "../../components/ButtonClosed";
 
@@ -50,7 +49,7 @@ function AddRevenue() {
   return (
     <FormContainer>
       <ButtonClosed />
-      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+      <FormComponent>
         {status === "error" && <div>Error al obtener los clientes</div>}
         <h1 className="title"> Ingresar nuevo corte</h1>
         <div className="form_container">
@@ -80,7 +79,6 @@ function AddRevenue() {
             <label className="form_label">Producto</label>
             <span className="form_line"></span>
           </div>
-
           <div className="form_group">
             <input
               className="form_input"
@@ -92,17 +90,22 @@ function AddRevenue() {
             <label className="form_label">Valor</label>
             <span className="form_line"></span>
             {errors.valor?.type === "required" && (
-              <span className="warning">Elija un producto para guardar</span>
+              <p className="warning">Elija un producto para guardar</p>
             )}
           </div>
-          <Spacer height="12vh" />
-          {loader | status | (isLoading === "loading") ? (
-            <Loader />
-          ) : (
-            <input className="form_submit" type="submit" value="Guardar" />
-          )}
         </div>
       </FormComponent>
+      <FooterBody>
+        {loader | isLoading ? (
+          <Loader />
+        ) : (
+          <input
+            className="form_submit"
+            onClick={handleSubmit(onSubmit)}
+            value="Agregar"
+          />
+        )}
+      </FooterBody>
     </FormContainer>
   );
 }

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { FormComponent, FormContainer } from "./styles";
+import { FormComponent, FormContainer, FooterBody } from "./styles";
 import { CreateServices } from "../../../api/services/services/createService";
-import Spacer from "../../../components/Spacer";
 import Swal from "sweetalert2";
-import ButtonClosed from "../../../components/ButtonClosed";
+import ButtonBack from "../../../components/ButtonBack/index";
 import Loader from "../../../components/Loader";
 
 function Services() {
@@ -35,8 +34,8 @@ function Services() {
   };
   return (
     <FormContainer>
-      <ButtonClosed />
-      <FormComponent onSubmit={handleSubmit(onSubmit)}>
+      <ButtonBack ubication="abmServices" />
+      <FormComponent>
         <h1 className="title"> Agregar nuevo Servicio</h1>
         <div className="form_container">
           <div className="form_group">
@@ -53,14 +52,19 @@ function Services() {
               <p className="warning">El nombre es requerido</p>
             )}
           </div>
-          <Spacer height="27vh" />
-          {loader ? (
-            <Loader />
-          ) : (
-            <input className="form_submit" type="submit" value="Cargar" />
-          )}
         </div>
       </FormComponent>
+      <FooterBody>
+        {loader ? (
+          <Loader />
+        ) : (
+          <input
+            className="form_submit"
+            onClick={handleSubmit(onSubmit)}
+            value="Agregar"
+          />
+        )}
+      </FooterBody>
     </FormContainer>
   );
 }

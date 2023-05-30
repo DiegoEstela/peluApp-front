@@ -8,27 +8,50 @@ export const FormContainer = styled.div`
   align-items: center;
 `;
 
+export const FooterBody = styled.div`
+  position: fixed;
+  bottom: 18vh;
+  .form_submit {
+    text-align: center;
+    width: 140px;
+    height: 32px;
+    background: #9db4c0;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    padding: 8px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    :hover {
+      cursor: pointer;
+    }
+  }
+`;
+
 export const FormComponent = styled.form`
   margin: auto;
   width: 80%;
   max-width: 370px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px -3px rgb(0 0 0 / 80%);
   @media (max-width: 768px) {
+    height: 100%;
+    padding: 0;
     border-radius: 0;
     box-shadow: none;
   }
  
-
-
   .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
-  .form_container {
-    margin-top: 3em;
+
+   .form_container {
+    margin-top: 32px;
     display: grid;
-    gap: 1.5em;
+    gap: 3em;
+    @media (max-width: 768px) {
+      margin-top: 16px;
+    display: grid;
+    gap: 0.5em;
+  }
   }
 
   .form_group {
@@ -57,34 +80,23 @@ export const FormComponent = styled.form`
     left: 1px;
   }
 
-  .form_submit{
-    background: #9db4c0;
-    color: #fff;
-    font-family: "Roboto", sans-serif;
-    margin: 0px 30px;
-    padding: 8px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px; 
-    :hover{
-        cursor: pointer
-    }
+
     .form_line{
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
         height: 1px;
-        background-color: red;
         transform: scale(0)
         transform: left bottom;
         transition: transform .4s;
 
     }
 
-  }
-
-  .warning{
+  
+    .warning{
+    margin: 0;
+    padding: 0;
     color: red;
   }
 

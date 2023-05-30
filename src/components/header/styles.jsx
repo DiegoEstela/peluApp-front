@@ -23,7 +23,7 @@ export const Row = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
+    padding: 10px;
   }
 `;
 
