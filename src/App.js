@@ -14,6 +14,20 @@ import AddRevenue from "./views/AddRevenue";
 import AddExpense from "./views/AddExpenses";
 
 function App() {
+  const disableScroll = () => {
+    document.body.style.overflow = "hidden";
+  };
+
+  const enableScroll = () => {
+    document.body.style.overflow = "auto";
+  };
+
+  // Llamar a disableScroll() cuando la aplicación se monta
+  disableScroll();
+
+  // Llamar a enableScroll() cuando la aplicación se desmonta
+  window.addEventListener("beforeunload", enableScroll);
+
   return (
     <FullContainer>
       <Header />
