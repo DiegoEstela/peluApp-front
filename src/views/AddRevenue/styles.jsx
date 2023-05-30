@@ -9,8 +9,7 @@ export const FormContainer = styled.div`
 `;
 
 export const FooterBody = styled.div`
-  position: fixed;
-  bottom: 18vh;
+  margin-bottom: 16px;
   .form_submit {
     text-align: center;
     width: 140px;
