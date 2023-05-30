@@ -24,7 +24,9 @@ export const Card = styled.div`
 export const FullContainer = styled.div`
   margin: 0;
   padding: 0;
-  height: -webkit-fill-available;
+  height: 100vh; 
+  width: 100vw;
+  overflow: hidden
   font-family: "Work Sans", sans-serif;
   input {
     color: red;
