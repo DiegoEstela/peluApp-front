@@ -7,7 +7,7 @@ import Home from "./views/Home";
 import Products from "./views/ProductsAbm/AddProducts";
 import Services from "./views/ServicesAbm/AddServices";
 import Footer from "./components/Footer";
-import { Container, FullContainer, Card } from "./App.style";
+import "./App.css";
 import ClientsAbm from "./views/ClientsAbm";
 import ProductsAbm from "./views/ProductsAbm";
 import ServicesAbm from "./views/ServicesAbm";
@@ -18,11 +18,11 @@ import Login from "./components/Login";
 
 function App() {
   return (
-    <FullContainer>
+    <div className="fullContainer">
       <AuthProvider>
         <Header />
-        <Container>
-          <Card>
+        <div className="container">
+          <div className="card">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route
@@ -92,11 +92,11 @@ function App() {
                 }
               />
             </Routes>
-          </Card>
-        </Container>
+          </div>
+        </div>
         <Footer />
       </AuthProvider>
-    </FullContainer>
+    </div>
   );
 }
 
