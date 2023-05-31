@@ -15,6 +15,9 @@ export const Container = styled.header`
     ),
     repeating-linear-gradient(#5c6b7355, #5c6b73);
   display: block;
+  @media (max-height: 500px) {
+    display: none;
+  }
 `;
 
 export const Row = styled.div`

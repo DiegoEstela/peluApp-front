@@ -13,7 +13,9 @@ export const FooterComponent = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  @media (max-height: 500px) {
+    display: none;
+  }
   span {
     display: flex;
     flex-direction: row;
