@@ -8,7 +8,7 @@ function ButtonBack({ ubication }) {
   return (
     <ButtonContainer>
       <Link to={`/${ubication}`}>
-        <BiCaretLeftCircle size="50px" color="#5C6B73" />
+        <BiCaretLeftCircle size="42px" color="#5C6B73" />
       </Link>
     </ButtonContainer>
   );

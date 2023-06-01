@@ -9,10 +9,15 @@ export const FooterComponent = styled.footer`
       #e5e5f7 8px
     ),
     repeating-linear-gradient(#5c6b7355, #5c6b73);
-  height: 10vh;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media (max-width: 768px) {
+    min-height: 70px;
+    margin: 0;
+    padding: 0;
+  }
   @media (max-height: 500px) {
     display: none;
   }

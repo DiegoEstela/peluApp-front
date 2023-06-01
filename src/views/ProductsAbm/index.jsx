@@ -8,13 +8,13 @@ function ProductsAbm() {
     <AbmContainer>
       <ButtonClosed />
       <Title> Menu Productos</Title>
-      <Spacer width="300px" height="50px" />
+      <Spacer width="300px" height="8%" />
       <Link to="/abmProducts/add" className="link">
         <Button text="Nuevo Producto" color="#C2DFE3" />
       </Link>
-      <Spacer width="300px" height="50px" />
+      <Spacer width="300px" height="8%" />
       <Button text="Editar Producto" color="#C2DFE3" />
-      <Spacer width="300px" height="50px" />
+      <Spacer width="300px" height="8%" />
       <Button text="Eliminar Producto" color="#C2DFE3" />
     </AbmContainer>
   );

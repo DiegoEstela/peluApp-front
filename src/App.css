@@ -1,10 +1,19 @@
+.fullContainer {
+  margin: 0;
+  padding: 0;
+  height: 100svh;
+  overflow: hidden;
+  font-family: "Work Sans", sans-serif;
+}
+
 .container {
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
   text-align: center;
-  height: 80svh;
+  height: 72vh;
+  padding: 6% 3vw;
 }
 
 .card {
@@ -14,23 +23,39 @@
 @media (max-width: 768px) {
   .card {
     width: 100%;
-    margin: 5%;
-    height: 70vh;
+    height: 72vh;
     border-radius: 10px;
     box-shadow: 0 5px 10px -3px rgb(0 0 0 / 80%);
+  }
+  .container {
+    height: 75svh;
   }
 }
 
 @media (max-height: 500px) {
+  .fullContainer {
+    overflow: hidden;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .container {
+    margin: 0;
+    padding: 10px;
+  }
   .card {
-    height: 100%;
+    height: 90svh;
   }
 }
 
-.fullContainer {
-  margin: 0;
-  padding: 0;
-  height: 100svh;
-  overflow: hidden;
-  font-family: "Work Sans", sans-serif;
+@media (max-height: 700px) {
+  .fullContainer {
+    overflow: hidden;
+    font-family: "Work Sans", sans-serif;
+  }
+
+  .container {
+    margin: 0;
+    padding: 8% 3vw;
+    height: 70%;
+  }
 }

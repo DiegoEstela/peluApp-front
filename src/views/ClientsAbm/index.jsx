@@ -8,15 +8,15 @@ function ClientsAbm() {
     <AbmContainer>
       <ButtonClosed />
       <Title> Menu Clientes</Title>
-      <Spacer width="10px" height="50px" />
+      <Spacer width="10px" height="8%" />
       <Link to="/abmClients/add" className="link">
         <Button text="Nuevo Cliente" color="#C2DFE3" />
       </Link>
-      <Spacer width="10px" height="50px" />
+      <Spacer width="10px" height="8%" />
       <Link to="/abmClients/edit" className="link">
         <Button text="Editar Cliente" color="#C2DFE3" />
       </Link>
-      <Spacer width="10px" height="50px" />
+      <Spacer width="10px" height="8%" />
       <Button text="Eliminar Cliente" color="#C2DFE3" />
     </AbmContainer>
   );

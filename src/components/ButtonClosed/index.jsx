@@ -8,7 +8,7 @@ function ButtonClosed() {
   return (
     <ButtonContainer>
       <Link to="/">
-        <BiXCircle size="50px" color="#5C6B73" />
+        <BiXCircle size="42px" color="#5C6B73" />
       </Link>
     </ButtonContainer>
   );
