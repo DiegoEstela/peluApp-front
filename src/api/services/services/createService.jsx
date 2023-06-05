@@ -1,7 +1,7 @@
 import axios from "axios";
 import { servicesUrl } from "../../../app/endpoints";
 
-export async function CreateServices(service) {
+export async function CreateServices(service, userId) {
   const { concepto } = service;
   try {
     const headers = {
@@ -9,8 +9,10 @@ export async function CreateServices(service) {
     };
 
     const body = {
+      idUsuario: userId,
       concepto,
     };
+
     await axios.post(servicesUrl, body, {
       headers: headers,
     });

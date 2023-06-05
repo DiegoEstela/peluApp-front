@@ -1,8 +1,9 @@
 import axios from "axios";
 import { expensesUrl } from "../../../app/endpoints";
 
-export async function createExpense(servicio_id, valor) {
+export async function createExpense(servicio_id, valor, userId) {
   const body = {
+    idUsuario: userId,
     servicio_id,
     valor,
   };

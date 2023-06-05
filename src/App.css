@@ -30,6 +30,10 @@
   .container {
     height: 70svh;
   }
+  .containerLogin {
+    margin: 40px 8px;
+    height: 70svh;
+  }
 }
 
 @media (max-width: 600px) {
@@ -45,6 +49,10 @@
     margin: 0;
     padding: 0;
   }
+  .containerLogin {
+    margin: 40px 8px;
+    height: 70svh;
+  }
 }
 
 @media (max-height: 500px) {
@@ -58,6 +66,10 @@
   }
   .card {
     height: 90svh;
+  }
+  .containerLogin {
+    margin: 40px 8px;
+    height: 70svh;
   }
 }
 

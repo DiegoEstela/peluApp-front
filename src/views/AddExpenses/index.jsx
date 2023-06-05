@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer, FooterBody } from "./styles";
@@ -8,11 +8,14 @@ import Loader from "../../components/Loader";
 import ButtonClosed from "../../components/ButtonClosed";
 import { getAllServices } from "../../api/services/services/getAllServices";
 import { createExpense } from "../../api/services/expense/createExpense";
+import { AuthContext } from "../../context/AuthProvider";
+import { getUserData } from "../../api/services/services/getUserData";
 
 function AddExpense() {
   const { data: services, isLoading } = useQuery("services", getAllServices);
   const [serviceId, setServiceId] = useState(1);
   const [loader, setLoader] = useState(false);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -22,7 +25,12 @@ function AddExpense() {
 
   const onSubmit = async (data) => {
     setLoader(true);
-    const result = await createExpense(serviceId, data?.valor);
+    const userData = await getUserData(user?.uid);
+    const result = await createExpense(
+      serviceId,
+      data?.valor,
+      userData?.userId
+    );
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -52,7 +60,10 @@ function AddExpense() {
               onChange={(e) => setServiceId(parseInt(e.target.value))}
             >
               {services?.data.map((service) => (
-                <option key={service.id} value={`${service.id}`}>
+                <option
+                  key={service.idServicio}
+                  value={`${service.idServicio}`}
+                >
                   {service.concepto}
                 </option>
               ))}

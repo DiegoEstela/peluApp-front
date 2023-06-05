@@ -9,7 +9,7 @@ function Footer() {
       <Link to="/addExpense">
         <BiMinusCircle size="48px" color="#CE2E49" />
       </Link>
-      <Link to="/clients">
+      <Link to="/abmClients/add">
         <BiUserCircle size="48px" color="black" />
       </Link>
       <Link to="/addRevenue">

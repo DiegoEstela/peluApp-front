@@ -1,9 +1,11 @@
 import { ButtonContainer, ButtonComponent } from "./styles";
 
-function Button({ text, color }) {
+function Button({ text, color, onClick }) {
   return (
     <ButtonContainer>
-      <ButtonComponent color={color}>{text}</ButtonComponent>
+      <ButtonComponent onClick={onClick} color={color}>
+        {text}
+      </ButtonComponent>
     </ButtonContainer>
   );
 }
