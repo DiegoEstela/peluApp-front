@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer, FooterBody } from "./styles";
@@ -6,9 +6,12 @@ import { CreateCostumer } from "../../../api/services/customers/createCustomer";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import ButtonBack from "../../../components/ButtonBack";
+import { AuthContext } from "../../../context/AuthProvider";
+import { getUserData } from "../../../api/services/services/getUserData";
 
 function Clients() {
   const [loader, setLoader] = useState(false);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -18,7 +21,8 @@ function Clients() {
 
   const onSubmit = async (data) => {
     setLoader(true);
-    const result = await CreateCostumer(data);
+    const userData = await getUserData(user?.uid);
+    const result = await CreateCostumer(data, userData?.userId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(

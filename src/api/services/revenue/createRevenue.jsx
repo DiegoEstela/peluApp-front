@@ -1,12 +1,16 @@
 import axios from "axios";
 import { revenuesUrl } from "../../../app/endpoints";
 
-export async function createRevenue(data) {
+export async function createRevenue(data, userId) {
+  const { idCliente, idProducto, monto, metodoPago } = data;
   const body = {
-    cliente_id: data.cliente_id,
-    valor: data.valor,
-    producto: data.product_id,
+    IdUsuario: userId,
+    idProducto,
+    idCliente,
+    monto,
+    metodoPago,
   };
+
   try {
     const headers = {
       "Content-Type": "application/json",

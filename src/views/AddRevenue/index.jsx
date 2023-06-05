@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -9,11 +9,14 @@ import { FormComponent, FormContainer, FooterBody } from "./styles";
 import Swal from "sweetalert2";
 import { createRevenue } from "../../api/services/revenue/createRevenue";
 import ButtonClosed from "../../components/ButtonClosed";
+import { AuthContext } from "../../context/AuthProvider";
+import { getUserData } from "../../api/services/services/getUserData";
 
 function AddRevenue() {
   const [loader, setLoader] = useState(false);
   const { data: customers, status } = useQuery("customers", getAllCustomers);
   const { data: products, isLoading } = useQuery("products", getAllProducts);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -24,7 +27,8 @@ function AddRevenue() {
 
   const onSubmit = async (data) => {
     setLoader(true);
-    const result = await createRevenue(data);
+    const userData = await getUserData(user?.uid);
+    const result = await createRevenue(data, userData?.userId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -38,11 +42,13 @@ function AddRevenue() {
   };
 
   const handleSelectChange = (prodId) => {
-    const productSelected = products.data.find((prod) => prod.id === prodId);
+    const productSelected = products.data.find(
+      (prod) => prod.idproducto === prodId
+    );
     if (productSelected) {
-      setValue("cliente_id", customers?.data[0].id);
-      setValue("product_id", productSelected.id);
-      setValue("valor", productSelected.precio);
+      setValue("idCliente", customers?.data[0].idcliente);
+      setValue("idProducto", productSelected.idproducto);
+      setValue("monto", productSelected.monto);
     }
   };
 
@@ -54,9 +60,12 @@ function AddRevenue() {
         <h1 className="title"> Ingresar nuevo corte</h1>
         <div className="form_container">
           <div className="form_group">
-            <select className="form_input" {...register("cliente_id")}>
+            <select className="form_input" {...register("idCliente")}>
               {customers?.data.map((customer) => (
-                <option key={customer.id} value={`${customer.id}`}>
+                <option
+                  key={customer.idcliente}
+                  value={`${customer.idcliente}`}
+                >
                   {customer.nombre} {customer.apellido}
                 </option>
               ))}
@@ -71,7 +80,10 @@ function AddRevenue() {
             >
               <option> Seleccionar</option>
               {products?.data.map((product) => (
-                <option key={product.id} value={`${product.id}`}>
+                <option
+                  key={product.idproducto}
+                  value={`${product.idproducto}`}
+                >
                   {product.concepto}
                 </option>
               ))}
@@ -83,18 +95,18 @@ function AddRevenue() {
             <input
               className="form_input"
               type="number"
-              {...register("valor", {
+              {...register("monto", {
                 required: true,
               })}
             />
-            <label className="form_label">Valor</label>
+            <label className="form_label">Monto</label>
             <span className="form_line"></span>
-            {errors.valor?.type === "required" && (
+            {errors.monto?.type === "required" && (
               <p className="warning">Elija un producto para guardar</p>
             )}
           </div>
           <div className="form_group">
-            <select className="form_input" {...register("medio_de_pago")}>
+            <select className="form_input" {...register("metodoPago")}>
               <option> Seleccionar</option>
               <option> Efectivo</option>
               <option> Mercado pago</option>
