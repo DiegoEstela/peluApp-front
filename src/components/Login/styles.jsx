@@ -10,6 +10,7 @@ export const FormContainer = styled.div`
 
 export const FooterBody = styled.div`
   margin-bottom: 16px;
+  margin-top: 30px;
   .form_submit {
     text-align: center;
     margin-top: 16px;
@@ -50,7 +51,7 @@ export const FormComponent = styled.form`
     @media (max-width: 768px) {
       margin-top: 16px;
     display: grid;
-    gap: 1em;
+    gap: 1.2em;
   }
   }
 

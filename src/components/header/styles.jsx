@@ -18,6 +18,7 @@ export const Container = styled.header`
   @media (max-width: 768px) {
     min-height: 72px;
   }
+
   @media (max-height: 500px) {
     display: none;
   }

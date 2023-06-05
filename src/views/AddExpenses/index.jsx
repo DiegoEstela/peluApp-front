@@ -74,6 +74,16 @@ function AddExpense() {
               <p className="warning">El valor del gasto es requerido</p>
             )}
           </div>
+          <div className="form_group">
+            <select className="form_input" {...register("medio_de_pago")}>
+              <option> Seleccionar</option>
+              <option> Efectivo</option>
+              <option> Mercado pago</option>
+              <option> Banco</option>
+            </select>
+            <label className="form_label">Medio de pago</label>
+            <span className="form_line"></span>
+          </div>
         </div>
       </FormComponent>
       <FooterBody>

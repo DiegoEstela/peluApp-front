@@ -10,6 +10,7 @@ export const FormContainer = styled.div`
 
 export const FooterBody = styled.div`
   margin-bottom: 16px;
+  margin-top: 30px;
   .form_submit {
     text-align: center;
     width: 140px;
@@ -31,27 +32,33 @@ export const FormComponent = styled.form`
   margin: auto;
   width: 80%;
   max-width: 370px;
-
   @media (max-width: 768px) {
     height: 100%;
     padding: 0;
     border-radius: 0;
     box-shadow: none;
   }
-
-
+ 
   .title {
     font-size: 1.2rem;
+    @media (max-width: 600px) {
+      font-size: 1rem;
+  }
   }
 
-  .form_container {
+   .form_container {
     margin-top: 32px;
     display: grid;
     gap: 3em;
     @media (max-width: 768px) {
       margin-top: 16px;
     display: grid;
-    gap: 1em;
+    gap: 0.5em;
+  }
+  @media (max-width: 600px) {
+    margin-top: 10px;
+    display: grid;
+
   }
   }
 
@@ -59,6 +66,7 @@ export const FormComponent = styled.form`
     position: relative;
   }
 
+  
   .form_input {
     width: 100%;
     background: none;
@@ -69,7 +77,9 @@ export const FormComponent = styled.form`
     outline: none;
     border-bottom: 1px solid #9db4c0;
     font-family: "Roboto", sans-serif;
-
+    @media (max-width: 600px) {
+      padding-top: 12px;
+  }
   }
 
   .form_label {
@@ -79,6 +89,7 @@ export const FormComponent = styled.form`
     top: -5px;
     left: 1px;
   }
+
 
     .form_line{
         position: absolute;

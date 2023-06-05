@@ -140,7 +140,7 @@ function EditClients() {
           <input
             className="form_submit"
             onClick={handleSubmit(onSubmit)}
-            value="Agregar"
+            value="Editar"
           />
         )}
       </FooterBody>

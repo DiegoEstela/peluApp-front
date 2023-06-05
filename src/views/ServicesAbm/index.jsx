@@ -8,13 +8,13 @@ function ServicesAbm() {
     <AbmContainer>
       <ButtonClosed />
       <Title> Menu Servicios</Title>
-      <Spacer width="300px" height="8%" />
+      <Spacer width="300px" height="3vh" />
       <Link to="/abmServices/add" className="link">
         <Button text="Nuevo Servicio" color="#C2DFE3" />
       </Link>
-      <Spacer width="300px" height="8%" />
+      <Spacer width="300px" height="3vh" />
       <Button text="Editar Servicio" color="#C2DFE3" />
-      <Spacer width="300px" height="8%" />
+      <Spacer width="300px" height="3vh" />
       <Button text="Eliminar Servicio" color="#C2DFE3" />
     </AbmContainer>
   );

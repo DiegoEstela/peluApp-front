@@ -9,11 +9,12 @@ export const FooterComponent = styled.footer`
       #e5e5f7 8px
     ),
     repeating-linear-gradient(#5c6b7355, #5c6b73);
-
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 10vh;
   @media (max-width: 768px) {
+    height: 12vh;
     min-height: 70px;
     margin: 0;
     padding: 0;
@@ -21,6 +22,7 @@ export const FooterComponent = styled.footer`
   @media (max-height: 500px) {
     display: none;
   }
+
   span {
     display: flex;
     flex-direction: row;
