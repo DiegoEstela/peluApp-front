@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FormComponent, FormContainer, FooterBody } from "./styles";
@@ -6,9 +6,12 @@ import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import { CreateProduct } from "../../../api/services/products/createProduct";
 import ButtonBack from "../../../components/ButtonBack";
+import { AuthContext } from "../../../context/AuthProvider";
+import { getUserData } from "../../../api/services/services/getUserData";
 
 function Products() {
   const [loader, setLoader] = useState(false);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -17,9 +20,9 @@ function Products() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     setLoader(true);
-    const result = await CreateProduct(data);
+    const userData = await getUserData(user?.uid);
+    const result = await CreateProduct(data, userData?.userId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -61,14 +64,14 @@ function Products() {
             <input
               className="form_input"
               type="number"
-              {...register("precio", {
+              {...register("monto", {
                 required: true,
               })}
             />
-            <label className="form_label">Precio</label>
+            <label className="form_label">monto</label>
             <span className="form_line"></span>
-            {errors.concepto?.type === "required" && (
-              <p className="warning">El valor del producto es requerido</p>
+            {errors.monto?.type === "required" && (
+              <p className="warning">El monto del producto es requerido</p>
             )}
           </div>
         </div>

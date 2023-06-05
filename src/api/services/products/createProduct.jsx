@@ -1,17 +1,19 @@
 import axios from "axios";
 import { productsUrl } from "../../../app/endpoints";
 
-export async function CreateProduct(product) {
-  const { concepto, precio } = product;
+export async function CreateProduct(product, userId) {
+  const { concepto, monto } = product;
   try {
     const headers = {
       "Content-Type": "application/json",
     };
 
     const body = {
+      idUsuario: userId,
       concepto,
-      precio,
+      monto,
     };
+    console.log(body);
     await axios.post(productsUrl, body, {
       headers: headers,
     });

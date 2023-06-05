@@ -4,7 +4,7 @@ import { revenuesUrl } from "../../../app/endpoints";
 export async function createRevenue(data, userId) {
   const { idCliente, idProducto, monto, metodoPago } = data;
   const body = {
-    IdUsuario: userId,
+    idUsuario: userId,
     idProducto,
     idCliente,
     monto,
