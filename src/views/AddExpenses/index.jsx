@@ -13,7 +13,7 @@ import { getUserData } from "../../api/services/services/getUserData";
 
 function AddExpense() {
   const { data: services, isLoading } = useQuery("services", getAllServices);
-  const [serviceId, setServiceId] = useState(1);
+  const [serviceId, setServiceId] = useState();
   const [loader, setLoader] = useState(false);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -26,11 +26,7 @@ function AddExpense() {
   const onSubmit = async (data) => {
     setLoader(true);
     const userData = await getUserData(user?.uid);
-    const result = await createExpense(
-      serviceId,
-      data?.valor,
-      userData?.userId
-    );
+    const result = await createExpense(serviceId, data, userData?.userId);
     if (result) {
       setLoader(false);
       const creacionOk = await Swal.fire(
@@ -59,10 +55,11 @@ function AddExpense() {
               className="form_input"
               onChange={(e) => setServiceId(parseInt(e.target.value))}
             >
+              <option> Seleccionar</option>
               {services?.data.map((service) => (
                 <option
-                  key={service.idServicio}
-                  value={`${service.idServicio}`}
+                  key={service.idservicio}
+                  value={`${service.idservicio}`}
                 >
                   {service.concepto}
                 </option>
@@ -75,14 +72,14 @@ function AddExpense() {
             <input
               className="form_input"
               type="number"
-              {...register("valor", {
+              {...register("monto", {
                 required: true,
               })}
             />
-            <label className="form_label">Valor del gasto</label>
+            <label className="form_label">Monto del gasto</label>
             <span className="form_line"></span>
-            {errors.valor?.type === "required" && (
-              <p className="warning">El valor del gasto es requerido</p>
+            {errors.monto?.type === "required" && (
+              <p className="warning">El monto del gasto es requerido</p>
             )}
           </div>
           <div className="form_group">
